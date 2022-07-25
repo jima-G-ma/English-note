@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import IndexView
+from . import views
+
+app_name = 'Note'
 
 urlpatterns = [
-    path('', IndexView.as_view()),
+    path('', views.IndexView.as_view(), name='index'),
+    path('category/<int:pk>/', views.CategoryView.as_view(), name='category'),
+    path('detail/<int:pk>/', views.DetailView.as_view(), name='detail'),
 ]
