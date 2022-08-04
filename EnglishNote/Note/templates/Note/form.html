@@ -1,0 +1,10 @@
+{% extends 'Note/base.html' %}
+
+{% block content %}
+<h2>問題登録</h2>
+<form action="" class="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="submit">登録</button>
+</form>
+{% endblock %}
