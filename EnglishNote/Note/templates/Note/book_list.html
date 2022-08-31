@@ -1,17 +1,48 @@
 {% extends 'Note/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
 
 {% block content %}
-{% for book in object_list %}
-<div class="card mb-4 mt-4">
-  <h4 class="card-header bg-dark text-white">単語帳</h4>
-  <div class="card-body">
-    <h3>{{book.name}}</h3>
-    <br /><br />
-    <a href="{% url 'Note:index' %}" class="btn btn-dark">単語を見る</a>
+<h2 class="mt-5" style="border-bottom: 3px solid rgba(218,218,218,1); color:#204969;">一覧</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+  <div class="col">
+    <div class="card bg_test mb-4" onclick="frameClick();">
+      <div class="card-header" style="color:#204969">単語帳を追加</div>
+      <div class="card-body bg_test_aria">
+      </div>
+    </div>
   </div>
+  {% for book in object_list %}
+  <div class="col">
+    <div class="card mb-4">
+      <div class="card-header" style="color:#204969">単語帳</div>
+      <div class="card-body">
+        <h5 class="card-title mb-4" style="color:#204969">{{book.name}}</h5>
+        <div class="btn-group-vertical">
+          <a href="{% url 'Note:page' pk=book.pk %}" class="btn btn-outline-dark mb-2" style="color:#204969">単語を見る</a>
+          <a href="#" class="btn btn-outline-dark dropdown-toggle" role="button" id="dropdownMenuLink"
+            data-bs-toggle="dropdown" aria-expanded="false" style="color:#204969">編集</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'Note:form' pk=book.pk %}" style="color:#204969">入力して単語を追加する</a></li>
+            <li><a class="dropdown-item" href="{% url 'Note:upload' %}" style="color:#204969">CSVで単語を追加する</a></li>
+            <li><a class="dropdown-item" href="{% url 'Note:editBook' pk=book.pk %}" style="color:#204969">名前変更</a></li>
+            <li><a class="dropdown-item" href="{% url 'Note:deleteBook' pk=book.pk %}" style="color:#204969">削除</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %}
 
+<script type="text/javascript">
+  function frameClick() {
+    document.location.href = "{% url 'Note:book_create' %}";
+  }
+</script>
 {% include 'Note/page.html' %}
 
 {% endblock %}
