@@ -1,0 +1,12 @@
+.bg_test-aria {
+  border: dotted 4px;                             /* 枠線指定 */
+}
+.bg_test {
+  border: dotted 3px;
+  border-color: rgba(218,218,218,1);
+  padding-bottom: 150px;
+  background-image: url("../img/kigou.f84f9361e516.png");
+  background-repeat: no-repeat;
+  background-position: 50% 60%;
+  background-size: 5%;
+}
