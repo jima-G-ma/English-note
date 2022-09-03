@@ -1,0 +1,4 @@
+django
+gunicorn
+whitenoise
+# &+juv=8lnj^#e7ugn58v-bd(np*^=ftpi$8a4=v%7w*+%mz^2e
