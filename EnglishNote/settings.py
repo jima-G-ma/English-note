@@ -132,8 +132,7 @@ LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/note/home'
 LOGOUT_REDIRECT_URL = '/login'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 DEBUG = False
 
 try:
